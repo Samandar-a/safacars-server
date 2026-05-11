@@ -39,12 +39,12 @@ app.post("/send", upload.array("photos", 20), async (req, res) => {
         const form = new FormData();
 
         form.append("chat_id", CHAT_ID);
-        form.append("photo", file.buffer, {
+        form.append("document", file.buffer, {
           filename: file.originalname,
           contentType: file.mimetype
         });
 
-        await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, {
+        await fetch(`https://api.telegram.org/bot${TOKEN}/sendDocument`, {
           method: "POST",
           body: form
         });
